@@ -1,19 +1,21 @@
+import {rerenderEntireTree} from "../Rerender";
+
 let state = {
     profilePage: {
         posts: [
-            {id: 1, massage: 'Hi, how are you?', likesCount: 0},
-            {id: 2, massage: 'Its my first post', likesCount: 12},
+            {id: 1, message: 'Hi, how are you?', likesCount: 0},
+            {id: 2, message: 'Its my first post', likesCount: 12},
         ],
 
 
     },
     dialogsPage: {
         messages: [
-            {id: 1, massage: 'Hello'},
-            {id: 2, massage: 'Heya'},
-            {id: 3, massage: 'how you doing'},
-            {id: 4, massage: 'Yo'},
-            {id: 5, massage: 'Hey'},
+            {id: 1, message: 'Hello'},
+            {id: 2, message: 'Heya'},
+            {id: 3, message: 'how you doing'},
+            {id: 4, message: 'Yo'},
+            {id: 5, message: 'Hey'},
         ],
         dialogs: [
             {id: 1, name: 'Lesha'},
@@ -29,12 +31,13 @@ let state = {
 }
 export let addPost = (postMessage) =>{
     let newPost = {
-        id:3,
+        id: 3,
         message: postMessage,
-        likesCount:0
+        likesCount: 21
 
     }
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
 }
 
 export default state

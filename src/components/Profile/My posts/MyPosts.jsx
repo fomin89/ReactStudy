@@ -4,13 +4,15 @@ import Post from "./post/Post";
 
 
 const MyPosts = (props) => {
-    let postsElements=props.posts.map(p=> <Post id={p.id} message={p.massage} LikesCount={p.likesCount}/>)
+    let postsElements=props.posts.map(p=> <Post id={p.id} message={p.message} LikesCount={p.likesCount}/>)
+
     let newPostElement = React.createRef();
 
 
     let addPost = () => {
         let text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value =''
     }
 
 
