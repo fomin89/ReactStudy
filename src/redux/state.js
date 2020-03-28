@@ -1,5 +1,5 @@
-let store ={
-    _state : {
+let store = {
+    _state: {
         profilePage: {
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: 0},
@@ -27,13 +27,18 @@ let store ={
             ]
         }
     },
-    getState () {
-        return this._state;
-    },
-    _callSubscriber () {
+    _callSubscriber() {
         console.log('State changed')
     },
-    addPost () {
+
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+    },
+
+ /*   _addPost() {
         let newPost = {
             id: 3,
             message: this._state.profilePage.newPostText,
@@ -44,14 +49,11 @@ let store ={
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
     },
-    updateNewPostText (newText) {
+    _updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state)
-    },
-    subscribe  (observer) {
-        this._callSubscriber = observer
-    },
-    addMessage ()  {
+    },*/
+    addMessage() {
         let newMessage = {
             id: 6,
             message: this._state.dialogsPage.newMessageText
@@ -60,10 +62,28 @@ let store ={
         this._state.dialogsPage.newMessageText = ''
         this._callSubscriber(this._state)
     },
-    updateNewMessageText (newMessage) {
+    updateNewMessageText(newMessage) {
         this._state.dialogsPage.newMessageText = newMessage;
         this._callSubscriber(this._state)
     },
+    dispatch(action) {
+        if (action.type === 'ADD-POST'){
+            let newPost = {
+                id: 3,
+                message: this._state.profilePage.newPostText,
+                likesCount: 21
+
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state)
+        }
+
+            }
 }
 
 
