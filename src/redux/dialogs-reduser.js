@@ -8,16 +8,19 @@ const dialogsReducer = (state, action) => {
             let newMessage = {
                 id: 6,
                 message: state.newMessageText
-            }
-            state.newMessageText = ''
-            state.messages.push(newMessage)
-            return state
+            };
+            state.newMessageText = '';
+            state.messages.push(newMessage);
+            return state;
         case UPDATE_NEW_MESSAGE_TEXT:
             state.newMessageText = action.newMessage;
-            return state
+            return state;
 
         default:
             return state
     }
-}
+};
+export const addMessageCreator =() => ({type: ADD_MESSAGE});
+export const updateNewMessageCreator =(text)=> ({type: UPDATE_NEW_MESSAGE_TEXT,newMessage: text});
+
 export default dialogsReducer

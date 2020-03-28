@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './MyPosts.module.css'
 import Post from "./post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reduser";
 
 const MyPosts = (props) => {
-    let postsElements = props.posts.map(p => <Post id={p.id} message={p.message} LikesCount={p.likesCount}/>)
+    let postsElements = props.posts.map(p => <Post id={p.id} message={p.message} LikesCount={p.likesCount}/>);
 
 let newPostText = props.posts.newPostText;
     let newPostElement = React.createRef();
@@ -13,13 +13,13 @@ let newPostText = props.posts.newPostText;
 
     let addPost = () => {
         props.dispatch(addPostActionCreator())
-    }
+    };
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
         let action = updateNewPostTextActionCreator(text);
         props.dispatch(action)
-    }
+    };
 
     return <div className={s.postsBlock}>
         <h3>My posts</h3>
@@ -42,6 +42,6 @@ let newPostText = props.posts.newPostText;
         </div>
 
     </div>
-}
+};
 
 export default MyPosts;
