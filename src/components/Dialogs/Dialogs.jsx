@@ -33,12 +33,13 @@ const Dialogs = (props) => {
 
                 <div>{messagesElement}</div>
                 <div><textarea
+                    placeholder='Enter your Message'
                     ref={newMessageElement}
                     onChange={onMessageChange}
                     value={newMessageText}
                 /></div>
                 <div>
-                    <button onClick={addMessage}>Add Message</button>
+                    <button onClick={addMessage}>Send</button>
                 </div>
             </div>
 

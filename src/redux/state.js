@@ -20,7 +20,7 @@ let store = {
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'Hey'},
             ],
-            newMessageText: 'ups',
+            newMessageText: '',
             dialogs: [
                 {id: 1, name: 'Lesha'},
                 {id: 2, name: 'Dasha'},
